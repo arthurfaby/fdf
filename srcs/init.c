@@ -6,7 +6,7 @@
 /*   By: afaby <afaby@student.42angouleme.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 16:11:53 by afaby             #+#    #+#             */
-/*   Updated: 2022/04/24 17:58:18 by afaby            ###   ########.fr       */
+/*   Updated: 2022/04/25 11:13:18 by afaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_point	*init_point(int x, int y, int z, int color)
 	return (new);
 }
 
-void	fill_board(t_point ****board, char *path)
+void	fill_board(t_point ***board, char *path)
 {
 	int		fd;
 	char	**to_treat;
@@ -58,6 +58,7 @@ void	fill_board(t_point ****board, char *path)
 	int		i;
 
 	x = 0;
+	i = 0;
 	fd = open_file(path);
 	line = get_next_line(fd, BUFFER_SIZE);
 	while (line)
@@ -66,17 +67,46 @@ void	fill_board(t_point ****board, char *path)
 		y = 0;
 		while (to_treat[i])
 		{
-			(*board)[x][y] = init_point(x, y, ft_atoi(to_treat[i]), 0xffffff);
+			board[y][x] = init_point(x, y, ft_atoi(to_treat[i]), 0xffffff);
 			i++;
 			y++;
 		}
+		board[x][y] = 0;
 		free(line);
 		ft_free_double_pointer((void **)to_treat);
 		line = get_next_line(fd, BUFFER_SIZE);
 		x++;
 	}
+	board[x] = 0;
 }
 
+t_point	***malloc_board(int n_x, int n_y)
+{
+	t_point	***board;
+	int		i;
+	
+	i = 0;
+	board = malloc((n_y + 1) * sizeof(t_point**));
+	if (!board)
+		return (0);
+	while (i < n_y)
+	{
+		board[i] = malloc((n_x  + 1) * sizeof(t_point*));
+		if (!board[i])
+		{
+			i = 0;
+			while (board[i])
+			{
+				free(board[i]);
+				i++;
+			}
+			free(board);
+			return (0);
+		}
+		i++;
+	}
+	return (board);
+}
 
 t_point	***init_board(char *path)
 {
@@ -89,8 +119,10 @@ t_point	***init_board(char *path)
 	n_y = count_rows(path);
 	// CHECK ERROR COLS VS ROWS
 
-	board = malloc((n_x + 1) * (n_y + 1) * sizeof(t_point*));
-	fill_board(&board, path);
+	board = malloc_board(n_x, n_y);
+	if (!board)
+		return (NULL);
+	fill_board(board, path);
 	fd = open_file(path);
 	
 	close_file(fd);
