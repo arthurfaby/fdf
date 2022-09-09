@@ -6,7 +6,7 @@
 /*   By: afaby <afaby@student.42angouleme.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 16:47:21 by afaby             #+#    #+#             */
-/*   Updated: 2022/04/24 17:28:43 by afaby            ###   ########.fr       */
+/*   Updated: 2022/04/25 14:00:21 by afaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,20 @@ int	count_cols(char *path)
 
 int	count_rows(char *path)
 {
-	int	fd;
-	int	n_y;
+	int		fd;
+	int		n_y;
+	char	*res;
 
 	fd = open_file(path);
 	n_y = 0;
-	while (get_next_line(fd, BUFFER_SIZE))
+	res = get_next_line(fd, BUFFER_SIZE);
+	while (res)
+	{
+		free(res);
+		res = NULL;
+		res = get_next_line(fd, BUFFER_SIZE);
 		n_y++;
+	}
 	close_file(fd);
 	return (n_y);
 }

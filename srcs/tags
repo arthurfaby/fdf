@@ -1,0 +1,42 @@
+ABS	../incs/defines.h	/^# define ABS(x) x < 0 ? -x : x$/
+BUFFER_SIZE	../incs/defines.h	16
+DEFINES_H	../incs/defines.h	14
+FUNCTIONS_H	../incs/functions.h	14
+INCLUDES_H	../incs/includes.h	14
+MAX	../incs/defines.h	/^# define MAX(a, b) a < b ? b : a$/
+MIN	../incs/defines.h	/^# define MIN(a, b) a < b ? a : b$/
+RGB	../incs/defines.h	/^# define RGB(r, g, b) ((((r) << 8) + (g)) << 8) + /
+STRUCTURES_H	../incs/structures.h	14
+addr	../incs/structures.h	27
+board	../incs/structures.h	38
+bpp	../incs/structures.h	28
+color	../incs/structures.h	21
+endian	../incs/structures.h	30
+gapx	../incs/structures.h	46
+gapy	../incs/structures.h	47
+height	../incs/structures.h	40
+img	../incs/structures.h	26
+img	../incs/structures.h	37
+line_len	../incs/structures.h	29
+mlx	../incs/structures.h	35
+n_x	../incs/structures.h	41
+n_y	../incs/structures.h	42
+rx	../incs/structures.h	50
+ry	../incs/structures.h	51
+rz	../incs/structures.h	52
+s_app	../incs/structures.h	33
+s_image	../incs/structures.h	24
+s_point	../incs/structures.h	16
+ssizex	../incs/structures.h	48
+ssizey	../incs/structures.h	49
+t_app	../incs/structures.h	53
+t_image	../incs/structures.h	31
+t_point	../incs/structures.h	22
+width	../incs/structures.h	39
+win	../incs/structures.h	36
+x	../incs/structures.h	18
+x_offset	../incs/structures.h	44
+y	../incs/structures.h	19
+y_offset	../incs/structures.h	45
+z	../incs/structures.h	20
+zoom	../incs/structures.h	43

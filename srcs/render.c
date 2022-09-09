@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   defines.h                                          :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afaby <afaby@student.42angouleme.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/24 17:26:16 by afaby             #+#    #+#             */
-/*   Updated: 2022/04/29 10:07:11 by afaby            ###   ########.fr       */
+/*   Created: 2022/04/27 18:06:25 by afaby             #+#    #+#             */
+/*   Updated: 2022/04/28 15:14:30 by afaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEFINES_H
-# define DEFINES_H
+#include "includes.h"
+#include "structures.h"
+#include "functions.h"
 
-# define BUFFER_SIZE 100
-
-# define ABS(x) x < 0 ? -x : x
-# define MAX(a, b) a < b ? b : a
-# define MIN(a, b) a < b ? a : b
-# define RGB(r, g, b) ((((r) << 8) + (g)) << 8) + (b)
-
-
-#endif
+int	render(t_app *app)
+{
+	if (app->win == NULL)
+		return (1);
+	render_background(app, 0);
+	print_board(app);
+	//render_board(app);
+	mlx_put_image_to_window(app->mlx, app->win, app->img->img, 0, 0);
+	return (0);
+}

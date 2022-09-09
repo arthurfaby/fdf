@@ -6,7 +6,7 @@
 #    By: afaby <afaby@student.42angouleme.fr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/24 15:12:12 by afaby             #+#    #+#              #
-#    Updated: 2022/04/25 09:57:52 by afaby            ###   ########.fr        #
+#    Updated: 2022/04/28 14:30:32 by afaby            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ all: $(NAME)
 
 $(NAME):
 	make -C $(LIBFT_DIR)
+	make -C $(MLX)
 	$(CC) -g $(SRCS) -o $(NAME) $(CFLAGS) $(LIBFT)
 
 clean:
