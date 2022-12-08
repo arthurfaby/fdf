@@ -6,7 +6,7 @@
 /*   By: afaby <afaby@student.42angouleme.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 15:24:55 by afaby             #+#    #+#             */
-/*   Updated: 2022/04/29 10:24:09 by afaby            ###   ########.fr       */
+/*   Updated: 2022/11/21 17:01:14 by afaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,9 +174,7 @@ int	mouse_hook(int button, int x, int y, t_app *app)
 		r = 1;
 	}
 	if (r)
-	{
 		refresh(app);
-	}
 	return (0);
 }
 
